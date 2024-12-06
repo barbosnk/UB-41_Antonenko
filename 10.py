@@ -1,20 +1,40 @@
-n = 4
-a = []
-file = open('vvod.txt')
-for i in file.readlines():
-    n1 = int(i)
-    a.append(n1)
-a = [a]*n
-for i in a:
-    i[-1], i[0] = i[0], i[-1]
-for i in a:
-    print(*i)
-print('-' * 10)
+with open('vvod.txt', '+r') as file:
+    s = file.readlines()
+    n = len(s)
 
-file_vivod = a
-#print(file_vivod)
-file_v = open('file_vivod.txt','w')
-file_v.write(str(file_vivod))
-file_v.close()
-for i in a:
-    print(*i)
+    a = []
+    for i in range(n):
+        if i != n - 1:
+            b = []
+            b.extend(s[i][:-1])
+            a.append(b)
+        else:
+            b = []
+            b.extend(s[i])
+            a.append(b)
+
+a1 = []
+for i in range(n):
+    b1 = []
+    for j in range(n):
+        b1.append(a[j][i])
+    a1.append(b1)
+
+first = a1[0]
+last = a1[-1]
+
+a1[0] = last
+a1[-1] = first
+
+
+a2 = []
+for i in range(n):
+    b2 = []
+    for j in range(n):
+        b2.append(a1[j][i])
+    a2.append(b2)
+
+with open('vivod.txt', '+w') as vivod:
+    for i in range(len(a2)):
+        row = ''.join(a2[i])
+        vivod.write(row + '\n')

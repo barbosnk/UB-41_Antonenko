@@ -1,4 +1,4 @@
-with open('vvod.txt', '+r') as file:
+with open('vvod.txt', 'r') as file:
     s = file.readlines()
     n = len(s)
 
@@ -34,7 +34,7 @@ for i in range(n):
         b2.append(a1[j][i])
     a2.append(b2)
 
-with open('vivod.txt', '+w') as vivod:
+with open('vivod.txt', 'w') as vivod:
     for i in range(len(a2)):
         row = ''.join(a2[i])
         vivod.write(row + '\n')
